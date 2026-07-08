@@ -1,10 +1,12 @@
 <?php
 use App\Services\Route;
+use App\Middleware\Auth;
+use App\Middleware\Guest;
 
-Route::add('', 'HomeController', 'index', 'GET');
-Route::add('login', 'LoginController', 'index', 'GET');
-Route::add('register', 'RegisterController', 'index', 'GET');
-Route::add('submit-login', 'LoginController', 'login', 'POST');
-Route::add('submit-register', 'RegisterController', 'register', 'POST');
-Route::add('logout', 'DashboardController', 'logout', 'GET');
-Route::add('dashboard', 'DashboardController', 'index', 'GET');
+Route::get('', 'HomeController', 'index');
+Route::get('login', 'LoginController', 'index', [Guest::class]);
+Route::get('register', 'RegisterController', 'index', [Guest::class]);
+Route::post('submit-login', 'LoginController', 'login');
+Route::post('submit-register', 'RegisterController', 'register');
+Route::get('logout', 'DashboardController', 'logout', [Auth::class]);
+Route::get('dashboard', 'DashboardController', 'index', [Auth::class]);

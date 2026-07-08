@@ -1,8 +1,14 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-if (isset($_SESSION["user_id"])) {
-    header("Location: dashboard.php");
-    exit();
+
+namespace App\Middleware;
+
+class Guest
+{
+    public function handle()
+    {
+        if (isset($_SESSION["user_id"])) {
+            redirect("dashboard");
+            exit();
+        }
+    }
 }

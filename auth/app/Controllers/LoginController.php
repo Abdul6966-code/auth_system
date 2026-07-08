@@ -8,7 +8,15 @@ class LoginController
 {
     public function index()
     {
-        require('pages/login.php');
+
+        // $user = new User;
+        // $data = $user->fetchSingle('SELECT * FROM users where id =1');
+
+        // echo '<pre>';
+        // print_r($data);
+        // exit;
+
+        view('auth.login');
     }
 
     public function login()

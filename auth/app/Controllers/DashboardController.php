@@ -6,7 +6,7 @@ class DashboardController
 {
     public function index()
     {
-        require_once('pages/dashboard.php');
+        view('dashboard');
     }
 
 

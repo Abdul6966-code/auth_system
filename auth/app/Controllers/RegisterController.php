@@ -8,7 +8,7 @@ class RegisterController
 {
     public function index()
     {
-        require_once("pages/register.php");
+        view('auth.register');
     }
 
 

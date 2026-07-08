@@ -1,24 +1,18 @@
 <?php
 
 namespace App\Models;
-
-use App\Config\Database;
 use PDO;
 
-class User {
+
+class User extends BaseModel{
 
     private string $table_name = 'users';
-    private PDO $conn;
 
     public int $id;
     public string $name;
     public string $email;
     public string $password;
 
-    public function __construct() {
-        $database = new Database();
-        $this->conn = $database->conn;
-    }
 
     public function register()
     {

@@ -18,6 +18,17 @@ class Route
     }
 
 
+    public static function get(string $uri, string $controller, string $action, array $middleware = [])
+    {
+        self::add($uri, $controller, $action, 'GET', $middleware);
+    }
+
+    public static function post(string $uri, string $controller, string $action, array $middleware = [])
+    {
+        self::add($uri, $controller, $action, 'POST', $middleware);
+    }
+
+
     public static function handle()
     {
         $requestUri = $_SERVER['REQUEST_URI'];
@@ -25,6 +36,13 @@ class Route
 
         foreach (self::$routes as $route) {
             if ('/' . $route['uri'] === $requestUri && $route['method'] === $requestMethod) {
+                
+                // hanlde middleware
+                foreach ($route['middleware'] as $middleware) {
+                    $middlewareInstance = new $middleware();
+                    $middlewareInstance->handle();
+                }
+
                 $controllerClass = self::$controllerNamespace . $route['controller'];
                 $action = $route['action'];
 
