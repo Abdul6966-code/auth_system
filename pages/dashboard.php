@@ -1,6 +1,3 @@
-<?php
-include_once 'auth.php';
-?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -18,7 +15,7 @@ include_once 'auth.php';
             <div class="col-md-6 pt-4">
                 <h2>User Dashboard</h2>
                 <p>Welcome, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</p>
-                <a href="logout.php" class="btn btn-danger">Logout</a>
+                <a href="logout" class="btn btn-danger">Logout</a>
             </div>
         </div>
     </div>

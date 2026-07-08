@@ -1,24 +1,3 @@
-<?php
-include_once 'guest.php';
-
-include_once 'app/User.php';
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Process registration logic here
-    $user = new User;
-    $user->name = $_POST['name'];
-    $user->email = $_POST['email'];
-    $user->password = $_POST['password'];
-    
-    if($user->register()) {
-        // Registration successful
-        echo "Registration successful!";
-    } else {
-        // Registration failed
-        echo "Registration failed!";
-    }
-}
-?>
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -35,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="row justify-content-center">
             <div class="col-md-6 pt-4">
                 <h2>Register Form</h2>
-                <form method="POST" action="register.php">
+                <form method="POST" action="submit-register">
 
                     <div class="form-group">
                         <label for="name">Name:</label>
@@ -58,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
 
                     <button type="submit" class="btn btn-primary">Register</button>
-                    <a href="login.php" class="btn btn-link">Already have an account? Login</a>
+                    <a href="login" class="btn btn-link">Already have an account? Login</a>
                 </form>
             </div>
         </div>
